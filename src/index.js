@@ -1,10 +1,15 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Layout from "./layout";
+import ReactDOM from "react-dom";
+
+// Context
+import { GlobalStateProvider } from "./context/globalContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Layout />
+    <GlobalStateProvider>
+      <Layout />
+    </GlobalStateProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

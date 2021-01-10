@@ -1,0 +1,73 @@
+.swiper-slide {
+  padding: 1.5rem 1rem 3.4rem 1rem;
+  img {
+    width: 100%;
+  }
+  .description {
+    line-height: 1.4;
+    @include mediaQuery(width600) {
+      margin-top: 0.4rem;
+    }
+  }
+  .project {
+    @include flex(row, $justify: space-between, $align: center);
+    width: 100%;
+    margin-bottom: 0.5rem;
+    h3 {
+      font-size: 1.8rem;
+      @include mediaQuery(width411) {
+        font-size: 2rem;
+      }
+      @include mediaQuery(width600) {
+        font-size: 2.2rem;
+      }
+    }
+    .links {
+      @include flex(row);
+      span {
+        align-self: center;
+        color: $main-font-color;
+        font-size: 1.2rem;
+        @include mediaQuery(width360) {
+          font-size: 1.4rem;
+        }
+        @include mediaQuery(width600) {
+          font-size: 1.6rem;
+        }
+      }
+      a {
+        @include flex(row, center, center);
+        color: $second-font-color;
+        font-size: 1.3rem;
+        &:nth-child(1) {
+          padding-right: 0.5rem;
+        }
+        &:nth-child(3) {
+          padding-left: 0.5rem;
+        }
+        @include mediaQuery(width360) {
+          font-size: 1.4rem;
+        }
+        @include mediaQuery(width411) {
+          font-size: 1.5rem;
+        }
+        @include mediaQuery(width600) {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}
+
+.swiper-container {
+  background-color: rgba($second-fill-color, 0.3);
+}
+
+.swiper-pagination {
+  .swiper-pagination-bullet {
+    background: $main-font-color;
+  }
+  .swiper-pagination-bullet-active {
+    background: $second-font-color;
+  }
+}

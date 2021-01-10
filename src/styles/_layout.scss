@@ -1,0 +1,440 @@
+.container {
+  @include flex(column);
+  position: relative;
+  @include mediaQuery(width1024) {
+    margin-left: 6.5rem;
+  }
+  section {
+    padding: 4rem 1rem;
+    @include mediaQuery(width1024) {
+      padding: 4rem 2rem;
+    }
+    @include mediaQuery(width1280) {
+      padding: 6rem 2rem;
+    }
+    .first-letter {
+      color: $second-font-color;
+    }
+    p {
+      font-size: 1.3rem;
+      line-height: 1.5;
+      @include mediaQuery(width360) {
+        font-size: 1.4rem;
+      }
+      @include mediaQuery(width600) {
+        font-size: 1.7rem;
+      }
+      @include mediaQuery(width768) {
+        font-size: 2.2rem;
+        line-height: 1.6;
+      }
+      @include mediaQuery(width1024) {
+        font-size: 2rem;
+      }
+      @include mediaQuery(width1280) {
+        font-size: 2.2rem;
+      }
+    }
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    text-align: center;
+    @include mediaQuery(width360) {
+      margin-bottom: 1.2rem;
+    }
+    @include mediaQuery(width411) {
+      font-size: 2.3rem;
+    }
+    @include mediaQuery(width600) {
+      font-size: 2.5rem;
+    }
+    @include mediaQuery(width768) {
+      font-size: 3rem;
+    }
+    @include mediaQuery(width1280) {
+      font-size: 3.2rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .home {
+    @include flex(column, $justify: center);
+    transition: 0.2s ease-in;
+    // min-height: calc(var(--vh, 1vh) * 100);
+    padding: 4.8rem 1rem 0 1rem;
+    min-height: calc(var(--vh) + 568px);
+    @include mediaQuery(height640) {
+      min-height: calc(var(--vh) + 640px);
+    }
+    @include mediaQuery(height667) {
+      min-height: calc(var(--vh) + 667px);
+    }
+    @include mediaQuery(height731) {
+      min-height: calc(var(--vh) + 731px);
+    }
+    @include mediaQuery(height720) {
+      min-height: calc(var(--vh) + 720px);
+    }
+    @include mediaQuery(height768) {
+      min-height: calc(var(--vh) + 768px);
+    }
+    @include mediaQuery(height800) {
+      min-height: calc(var(--vh) + 800px);
+    }
+    @include mediaQuery(height812) {
+      min-height: calc(var(--vh) + 812px);
+    }
+    @include mediaQuery(height823) {
+      min-height: calc(var(--vh) + 823px);
+    }
+    @include mediaQuery(height1024) {
+      min-height: calc(var(--vh) + 1024px);
+    }
+    @include mediaQuery(width1024) {
+      min-height: 100vh;
+      padding: 0 3rem;
+    }
+    h1 {
+      font-size: 2rem;
+      line-height: 1.5;
+      &:nth-of-type(2) {
+        margin-left: 0.5rem;
+      }
+      &:nth-of-type(3) {
+        margin-left: 1.5rem;
+      }
+      @include mediaQuery(width360) {
+        font-size: 2.3rem;
+      }
+      @include mediaQuery(width411) {
+        font-size: 2.7rem;
+      }
+      @include mediaQuery(width600) {
+        font-size: 3.2rem;
+        &:nth-of-type(2) {
+          margin-left: 1rem;
+        }
+        &:nth-of-type(3) {
+          margin-left: 3rem;
+        }
+      }
+      @include mediaQuery(width768) {
+        font-size: 3.8rem;
+        &:nth-of-type(2) {
+          margin-left: 2rem;
+        }
+        &:nth-of-type(3) {
+          margin-left: 5rem;
+        }
+      }
+      @include mediaQuery(width1280) {
+        font-size: 4.4rem;
+        &:nth-of-type(2) {
+          margin-left: 4rem;
+        }
+        &:nth-of-type(3) {
+          margin-left: 10rem;
+        }
+      }
+    }
+    .arrow {
+      margin-top: 1rem;
+      align-self: center;
+      position: relative;
+      .chevron {
+        position: absolute;
+        height: 2rem;
+        width: 2rem;
+        opacity: 0;
+        transform: scale3d(0.5, 0.5, 0.5);
+        animation: move 3s ease-out infinite;
+        &:first-child {
+          animation: move 3s ease-out 1s infinite;
+        }
+        &:nth-child(2) {
+          animation: move 3s ease-out 2s infinite;
+        }
+        @include mediaQuery(width360) {
+          height: 2.3rem;
+          width: 2.3rem;
+        }
+        @include mediaQuery(width411) {
+          height: 2.6rem;
+          width: 2.6rem;
+        }
+        @include mediaQuery(width600) {
+          height: 3rem;
+          width: 3rem;
+        }
+        @include mediaQuery(width768) {
+          height: 3.5rem;
+          width: 3.5rem;
+        }
+      }
+    }
+  }
+
+  .skills {
+    p {
+      margin-bottom: 1rem;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .projects {
+    padding-left: 0;
+    padding-right: 0;
+    @include mediaQuery(width1024) {
+      padding: 4rem 2rem;
+    }
+  }
+
+  .contact {
+    form {
+      @include flex(column);
+      @include mediaQuery(width411) {
+        width: 95%;
+        margin: 0 auto;
+      }
+      @include mediaQuery(width600) {
+        width: 85%;
+      }
+      @include mediaQuery(width768) {
+        width: 75%;
+      }
+      @include mediaQuery(width1024) {
+        width: 65%;
+      }
+      input,
+      textarea,
+      button {
+        border: 0.1rem solid rgba($main-font-color, 0.4);
+        background-color: $fill-color;
+        color: $main-font-color;
+        padding: 0.8rem 0.5rem;
+        font-size: 1.6rem;
+        outline: none;
+        &:focus {
+          border: 1px solid ($second-font-color);
+        }
+        @include mediaQuery(width360) {
+          padding: 0.9rem 0.5rem;
+        }
+        @include mediaQuery(width411) {
+          padding: 1rem 0.6rem;
+          font-size: 1.7rem;
+        }
+        @include mediaQuery(width600) {
+          font-size: 2rem;
+        }
+        @include mediaQuery(width768) {
+          font-size: 2.3rem;
+          padding: 1rem;
+        }
+      }
+      input,
+      textarea {
+        margin-bottom: 0.7rem;
+        @include mediaQuery(width360) {
+          margin-bottom: 0.9rem;
+        }
+        @include mediaQuery(width411) {
+          margin-bottom: 1rem;
+        }
+        @include mediaQuery(width600) {
+          margin-bottom: 1.2rem;
+        }
+      }
+      textarea {
+        min-height: 8rem;
+        min-width: 100%;
+        max-width: 100%;
+        max-height: 15rem;
+        @include mediaQuery(width411) {
+          min-height: 10rem;
+          max-height: 17rem;
+        }
+        @include mediaQuery(width600) {
+          min-height: 12rem;
+          max-height: 20rem;
+        }
+        @include mediaQuery(width768) {
+          min-height: 14rem;
+          max-height: 22rem;
+        }
+      }
+      button {
+        width: 40%;
+        margin-top: 0.2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        align-self: center;
+        padding: 0.8rem;
+        @include mediaQuery(width360) {
+          width: 45%;
+        }
+        @include mediaQuery(width411) {
+          letter-spacing: 0.2rem;
+          margin-top: 0.3rem;
+        }
+        @include mediaQuery(width600) {
+          letter-spacing: 0.3rem;
+        }
+        @include mediaQuery(width1024) {
+          letter-spacing: 0.2rem;
+          width: 35%;
+        }
+      }
+    }
+  }
+
+  .footer {
+    @include flex(row, $justify: center, $align: center);
+    font-size: 0.9rem;
+    margin-top: 4rem;
+    padding: 1rem 0;
+    background-color: $second-fill-color;
+    @include mediaQuery(width360) {
+      font-size: 1rem;
+    }
+    @include mediaQuery(width411) {
+      font-size: 1.2rem;
+    }
+    @include mediaQuery(width600) {
+      font-size: 1.5rem;
+    }
+    @include mediaQuery(width768) {
+      font-size: 1.6rem;
+    }
+    @include mediaQuery(width1024) {
+      flex-direction: column;
+      background-color: rgba($second-fill-color, 0.5);
+    }
+
+    .info {
+      padding-right: 1rem;
+      @include mediaQuery(width600) {
+        padding-right: 1.5rem;
+      }
+      @include mediaQuery(width768) {
+        padding-right: 2rem;
+      }
+      .socials {
+        @include flex(row, $justify: center);
+        a {
+          display: flex;
+          padding: 0.2rem;
+          color: $main-font-color;
+          .mobile-social-icon {
+            width: 2rem;
+            @include mediaQuery(width360) {
+              width: 2.2rem;
+            }
+            @include mediaQuery(width411) {
+              width: 2.4rem;
+            }
+            @include mediaQuery(width600) {
+              width: 2.8rem;
+              margin: 0 0.2rem;
+            }
+            @include mediaQuery(width768) {
+              width: 3rem;
+            }
+          }
+        }
+      }
+      .copyright {
+        margin-top: 0.2rem;
+        @include mediaQuery(width360) {
+          margin-top: 0.3rem;
+        }
+        @include mediaQuery(width768) {
+          margin-top: 0.6rem;
+        }
+      }
+    }
+
+    .contact-info {
+      border-left: 1px solid rgba($main-font-color, 0.4);
+      padding-left: 1rem;
+      @include mediaQuery(width600) {
+        padding-left: 1.5rem;
+      }
+      @include mediaQuery(width768) {
+        padding-left: 2rem;
+      }
+      @include mediaQuery(width1024) {
+        @include flex(row);
+        padding-left: 0;
+        border-left: none;
+      }
+      .phone {
+        margin: 0.3rem 0;
+      }
+      .phone,
+      .location,
+      .email {
+        @include flex(row, $align: center);
+        @include mediaQuery(width1024) {
+          margin: 0 1rem;
+        }
+        .contact-icon {
+          width: 1.5rem;
+          margin-right: 0.5rem;
+          @include mediaQuery(width360) {
+            width: 1.7rem;
+          }
+          @include mediaQuery(width411) {
+            width: 1.8rem;
+          }
+          @include mediaQuery(width600) {
+            width: 2.1rem;
+            margin-right: 0.7rem;
+          }
+          @include mediaQuery(width768) {
+            width: 2.4rem;
+            margin-right: 1rem;
+          }
+          @include mediaQuery(width1024) {
+            width: 2rem;
+            margin-right: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  // Constellation
+  #tsparticles {
+    @include position(fixed, $top: 0, $left: 0, $bottom: 0);
+    width: 100%;
+    z-index: -1;
+    @include mediaQuery(width1024) {
+      left: 6rem;
+    }
+  }
+}
+
+// Animations
+@keyframes move {
+  25% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 1;
+    transform: translateY(3rem);
+  }
+  67% {
+    opacity: 1;
+    transform: translateY(4rem);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(5.5rem) scale3d(0.5, 0.5, 0.5);
+  }
+}

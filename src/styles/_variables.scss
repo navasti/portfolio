@@ -1,0 +1,59 @@
+$fill-color: #222;
+$second-fill-color: #151515;
+
+$main-font-color: #fff;
+$second-font-color: #f1c40f;
+
+$main-font: "Montserrat", sans-serif;
+$second-font: "Dancing Script", cursive;
+
+$breakpoints: (
+  height640: (
+    min-height: 638px,
+  ),
+  height667: (
+    min-height: 666px,
+  ),
+  height731: (
+    min-height: 730px,
+  ),
+  height736: (
+    min-height: 735px,
+  ),
+  height720: (
+    min-height: 720px,
+  ),
+  height800: (
+    min-height: 799px,
+  ),
+  height812: (
+    min-height: 811px,
+  ),
+  height823: (
+    min-height: 822px,
+  ),
+  height1024: (
+    min-height: 1023px,
+  ),
+  width360: (
+    min-width: 359px,
+  ),
+  width411: (
+    min-width: 410px,
+  ),
+  width600: (
+    min-width: 599px,
+  ),
+  width768: (
+    min-width: 767px,
+  ),
+  width1024: (
+    min-width: 1023px,
+  ),
+  width1280: (
+    min-width: 1279px,
+  ),
+  width1600: (
+    min-width: 1599px,
+  ),
+);
