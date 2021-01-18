@@ -5,14 +5,12 @@
   }
   .description {
     line-height: 1.4;
-    @include mediaQuery(width600) {
-      margin-top: 0.4rem;
-    }
+    margin-top: 0.4rem;
   }
   .project {
     @include flex(row, $justify: space-between, $align: center);
     width: 100%;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.7rem;
     h3 {
       font-size: 1.8rem;
       @include mediaQuery(width411) {

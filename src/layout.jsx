@@ -140,16 +140,32 @@ const Layout = () => {
           {width < 1024 && (
             <div className="info">
               <div className="socials">
-                <a href="/">
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://github.com/navasti"
+                >
                   <GithubWithCircle className="mobile-social-icon" />
                 </a>
-                <a href="/">
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.linkedin.com/in/szostak-pawel/"
+                >
                   <LinkedinWithCircle className="mobile-social-icon" />
                 </a>
-                <a href="/">
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.facebook.com/szostak.paw/"
+                >
                   <FacebookWithCircle className="mobile-social-icon" />
                 </a>
-                <a href="/">
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.instagram.com/navasti/"
+                >
                   <InstagramWithCircle className="mobile-social-icon" />
                 </a>
               </div>

@@ -1,0 +1,37 @@
+aside {
+  @include flex(column, $justify: space-between, $align: center);
+  @include position(fixed, $top: 0, $left: 0, $bottom: 0);
+  border-right: 1px solid rgba($main-font-color, 0.1);
+  background-color: $second-fill-color;
+  width: 6.5rem;
+  z-index: 99;
+  padding: 1rem 0;
+  .logo {
+    font-size: 3rem;
+  }
+  nav {
+    div {
+      @include flex(column, $align: center);
+      width: 6.5rem;
+      padding: 0.4rem 0;
+      .desktop-nav-icon {
+        width: 2.5rem;
+      }
+      span {
+        font-size: 1.3rem;
+      }
+    }
+  }
+  .socials {
+    @include flex(column, $align: center);
+    a {
+      color: rgba($main-font-color, 0.8);
+      padding: 0.3rem 0rem;
+      width: 6.5rem;
+      text-align: center;
+      .desktop-social-icon {
+        width: 2rem;
+      }
+    }
+  }
+}

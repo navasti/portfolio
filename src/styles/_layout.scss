@@ -7,10 +7,16 @@
   section {
     padding: 4rem 1rem;
     @include mediaQuery(width1024) {
-      padding: 4rem 2rem;
+      padding: 4rem 4rem;
     }
     @include mediaQuery(width1280) {
-      padding: 6rem 2rem;
+      padding: 6rem 6rem;
+    }
+    @include mediaQuery(width1440) {
+      padding: 8rem 10rem;
+    }
+    @include mediaQuery(width1600) {
+      padding: 8rem 14rem;
     }
     .first-letter {
       color: $second-font-color;
@@ -33,6 +39,9 @@
       }
       @include mediaQuery(width1280) {
         font-size: 2.2rem;
+      }
+      @include mediaQuery(width1600) {
+        font-size: 2.4rem;
       }
     }
   }
@@ -58,12 +67,15 @@
       font-size: 3.2rem;
       margin-bottom: 1.5rem;
     }
+    @include mediaQuery(width1600) {
+      font-size: 3.4rem;
+      margin-bottom: 1.8rem;
+    }
   }
 
   .home {
     @include flex(column, $justify: center);
     transition: 0.2s ease-in;
-    // min-height: calc(var(--vh, 1vh) * 100);
     padding: 4.8rem 1rem 0 1rem;
     min-height: calc(var(--vh) + 568px);
     @include mediaQuery(height640) {
@@ -95,7 +107,16 @@
     }
     @include mediaQuery(width1024) {
       min-height: 100vh;
-      padding: 0 3rem;
+      padding: 0 4rem;
+    }
+    @include mediaQuery(width1280) {
+      padding: 0 6rem;
+    }
+    @include mediaQuery(width1440) {
+      padding: 0 10rem;
+    }
+    @include mediaQuery(width1600) {
+      padding: 0 14rem;
     }
     h1 {
       font-size: 2rem;
@@ -138,6 +159,18 @@
         &:nth-of-type(3) {
           margin-left: 10rem;
         }
+      }
+      @include mediaQuery(width1440) {
+        font-size: 4.6rem;
+        &:nth-of-type(2) {
+          margin-left: 5rem;
+        }
+        &:nth-of-type(3) {
+          margin-left: 11rem;
+        }
+      }
+      @include mediaQuery(width1600) {
+        font-size: 5.2rem;
       }
     }
     .arrow {
@@ -190,7 +223,16 @@
     padding-left: 0;
     padding-right: 0;
     @include mediaQuery(width1024) {
-      padding: 4rem 2rem;
+      padding: 4rem 4rem;
+    }
+    @include mediaQuery(width1280) {
+      padding: 6rem 6rem;
+    }
+    @include mediaQuery(width1440) {
+      padding: 8rem 10rem;
+    }
+    @include mediaQuery(width1600) {
+      padding: 8rem 14rem;
     }
   }
 
@@ -209,6 +251,15 @@
       }
       @include mediaQuery(width1024) {
         width: 65%;
+      }
+      @include mediaQuery(width1280) {
+        width: 60%;
+      }
+      @include mediaQuery(width1600) {
+        width: 55%;
+      }
+      @include mediaQuery(width1820) {
+        width: 50%;
       }
       input,
       textarea,
@@ -267,6 +318,14 @@
           min-height: 14rem;
           max-height: 22rem;
         }
+        @include mediaQuery(width1280) {
+          min-height: 16rem;
+          max-height: 24rem;
+        }
+        @include mediaQuery(width1440) {
+          min-height: 17rem;
+          max-height: 25rem;
+        }
       }
       button {
         width: 40%;
@@ -314,6 +373,12 @@
     @include mediaQuery(width1024) {
       flex-direction: column;
       background-color: rgba($second-fill-color, 0.5);
+    }
+    @include mediaQuery(width1280) {
+      margin-top: 6rem;
+    }
+    @include mediaQuery(width1440) {
+      margin-top: 8rem;
     }
 
     .info {
