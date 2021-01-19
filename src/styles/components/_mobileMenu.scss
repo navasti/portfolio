@@ -38,6 +38,7 @@ header {
     div {
       @include flex(column, $align: center);
       padding: 1rem;
+      cursor: pointer;
       &.active {
         color: $second-font-color;
       }

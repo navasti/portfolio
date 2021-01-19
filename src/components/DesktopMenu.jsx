@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 // Icons
 import { FacebookWithCircle } from "@styled-icons/entypo-social/FacebookWithCircle";
@@ -13,63 +13,91 @@ import {
   Home,
 } from "@styled-icons/feather";
 
+// Utils
+import checkScrolledSection from "../utils/checkScrolledSection";
+
+// Hooks
+import useScrollPosition from "../hooks/useScrollPosition";
+
 const DesktopMenu = ({ scroll }) => {
-  const scrollToSection = section => {
-    if (section === "home") scroll.home();
-    if (section === "about") scroll.about();
-    if (section === "skills") scroll.skills();
-    if (section === "projects") scroll.projects();
-    if (section === "contact") scroll.contact();
-  };
+  const [currentSection, setCurrentSection] = useState("");
+  const scrollPosition = useScrollPosition();
+
+  useEffect(() => {
+    let isMounted = true;
+    if (isMounted) {
+      let section = checkScrolledSection(scrollPosition);
+      setCurrentSection(section);
+    }
+    return function cleanup() {
+      isMounted = false;
+    };
+  }, [scrollPosition]);
+
   return (
     <aside>
       <div className="logo">PS</div>
       <nav>
-        <div onClick={() => scrollToSection("home")}>
-          <Home className="desktop-nav-icon" onClick={scroll.home} />
+        <div
+          onClick={scroll.home}
+          className={currentSection === "home" ? "active" : ""}
+        >
+          <Home className="desktop-nav-icon" />
           <span>home</span>
         </div>
-        <div onClick={() => scrollToSection("about")}>
-          <About onClick={scroll.about} className="desktop-nav-icon" />
+        <div
+          onClick={scroll.about}
+          className={currentSection === "about" ? "active" : ""}
+        >
+          <About className="desktop-nav-icon" />
           <span>about</span>
         </div>
-        <div onClick={() => scrollToSection("skills")}>
-          <Skills onClick={scroll.skills} className="desktop-nav-icon" />
+        <div
+          onClick={scroll.skills}
+          className={currentSection === "skills" ? "active" : ""}
+        >
+          <Skills className="desktop-nav-icon" />
           <span>skills</span>
         </div>
-        <div onClick={() => scrollToSection("projects")}>
-          <Projects onClick={scroll.projects} className="desktop-nav-icon" />
+        <div
+          onClick={scroll.projects}
+          className={currentSection === "projects" ? "active" : ""}
+        >
+          <Projects className="desktop-nav-icon" />
           <span>projects</span>
         </div>
-        <div onClick={() => scrollToSection("contact")}>
-          <Contact onClick={scroll.contact} className="desktop-nav-icon" />
+        <div
+          onClick={scroll.contact}
+          className={currentSection === "contact" ? "active" : ""}
+        >
+          <Contact className="desktop-nav-icon" />
           <span>contact</span>
         </div>
       </nav>
       <div className="socials">
         <a target="_blank" rel="noreferrer" href="https://github.com/navasti">
-          <GithubWithCircle className="desktop-social-icon" />
+          <GithubWithCircle className="desktop-social-icon github" />
         </a>
         <a
           target="_blank"
           rel="noreferrer"
           href="https://www.linkedin.com/in/szostak-pawel/"
         >
-          <LinkedinWithCircle className="desktop-social-icon" />
+          <LinkedinWithCircle className="desktop-social-icon linkedin" />
         </a>
         <a
           target="_blank"
           rel="noreferrer"
           href="https://www.facebook.com/szostak.paw/"
         >
-          <FacebookWithCircle className="desktop-social-icon" />
+          <FacebookWithCircle className="desktop-social-icon facebook" />
         </a>
         <a
           target="_blank"
           rel="noreferrer"
           href="https://www.instagram.com/navasti/"
         >
-          <InstagramWithCircle className="desktop-social-icon" />
+          <InstagramWithCircle className="desktop-social-icon instagram" />
         </a>
       </div>
     </aside>

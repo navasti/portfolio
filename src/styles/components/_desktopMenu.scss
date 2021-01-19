@@ -8,17 +8,32 @@ aside {
   padding: 1rem 0;
   .logo {
     font-size: 3rem;
+    @include mediaQuery(width1600) {
+      font-size: 3.4rem;
+    }
   }
   nav {
     div {
       @include flex(column, $align: center);
       width: 6.5rem;
+      cursor: pointer;
       padding: 0.4rem 0;
+      &.active {
+        color: $second-font-color;
+      }
+      &:hover {
+        .desktop-nav-icon,
+        span {
+          color: $second-font-color;
+        }
+      }
       .desktop-nav-icon {
         width: 2.5rem;
+        transition: color 0.2s ease-in;
       }
       span {
         font-size: 1.3rem;
+        transition: color 0.2s ease-in;
       }
     }
   }
@@ -29,8 +44,14 @@ aside {
       padding: 0.3rem 0rem;
       width: 6.5rem;
       text-align: center;
+      &:hover {
+        color: $second-font-color;
+      }
       .desktop-social-icon {
         width: 2rem;
+        @include mediaQuery(width1600) {
+          width: 2.2rem;
+        }
       }
     }
   }

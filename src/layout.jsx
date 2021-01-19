@@ -42,6 +42,10 @@ const Layout = () => {
     contact: () => contact.current.scrollIntoView({ block: "center" }),
   };
 
+  const handleSubmit = e => {
+    e.preventDefault();
+  };
+
   useEffect(() => {
     setHeight();
     window.addEventListener("resize", () => setHeight());
@@ -127,12 +131,12 @@ const Layout = () => {
           <h2>
             <span className="first-letter">G</span>et in touch
           </h2>
-          <form>
+          <form onSubmit={e => handleSubmit(e)}>
             <input type="text" placeholder="Full name" name="full-name" />
             <input type="email" placeholder="Email" name="email" />
             <input type="text" placeholder="Subject" name="subject" />
             <textarea name="message" placeholder="Message" />
-            <button>Send</button>
+            <button type="submit">Send</button>
           </form>
         </section>
 

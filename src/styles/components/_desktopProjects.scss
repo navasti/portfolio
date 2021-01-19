@@ -4,6 +4,9 @@
     @include flex(row, $align: center);
     margin: 0.7rem 0;
     background-color: rgba($second-fill-color, 0.2);
+    @include mediaQuery(width1820) {
+      margin: 1rem 0;
+    }
     .preview {
       flex-basis: 30%;
       @include mediaQuery(width1820) {

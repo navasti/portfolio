@@ -6,6 +6,9 @@ import { Context } from "../context/globalContext";
 // Hooks
 import useScrollPosition from "../hooks/useScrollPosition";
 
+// Utils
+import checkScrolledSection from "../utils/checkScrolledSection";
+
 // Icons
 import {
   Send as Contact,
@@ -26,43 +29,16 @@ const MobileMenu = ({ scroll }) => {
     });
   };
 
-  const scrollToSection = section => {
-    toggleMenu();
-    if (section === "home") scroll.home();
-    if (section === "about") scroll.about();
-    if (section === "skills") scroll.skills();
-    if (section === "projects") scroll.projects();
-    if (section === "contact") scroll.contact();
-  };
-
-  const checkIfCurrentSection = scrollPosition => {
-    const body = document.body.getBoundingClientRect().top;
-    const about = document.querySelector(".about").getBoundingClientRect();
-    const skills = document.querySelector(".skills").getBoundingClientRect();
-    const projects = document
-      .querySelector(".projects")
-      .getBoundingClientRect();
-    const contact = document.querySelector(".contact").getBoundingClientRect();
-
-    if (about.top - body - about.height < scrollPosition) {
-      setCurrentSection("about");
-    } else {
-      setCurrentSection("home");
-    }
-    if (skills.top - body - skills.height < scrollPosition) {
-      setCurrentSection("skills");
-    }
-    if (projects.top - body - projects.height < scrollPosition) {
-      setCurrentSection("projects");
-    }
-    if (contact.top - body - contact.height < scrollPosition) {
-      setCurrentSection("contact");
-    }
-  };
-
   useEffect(() => {
-    checkIfCurrentSection(scrollPosition);
-  });
+    let isMounted = true;
+    if (isMounted) {
+      let section = checkScrolledSection(scrollPosition);
+      setCurrentSection(section);
+    }
+    return function cleanup() {
+      isMounted = false;
+    };
+  }, [scrollPosition]);
 
   return (
     <header>
@@ -80,35 +56,35 @@ const MobileMenu = ({ scroll }) => {
       <nav className={state.isMenuOpen ? "mobile-nav open" : "mobile-nav"}>
         <div
           className={currentSection === "home" ? "active" : ""}
-          onClick={() => scrollToSection("home")}
+          onClick={scroll.home}
         >
           <Home className="mobile-nav-icon" />
           <span>home</span>
         </div>
         <div
           className={currentSection === "about" ? "active" : ""}
-          onClick={() => scrollToSection("about")}
+          onClick={scroll.about}
         >
           <About className="mobile-nav-icon" />
           <span>about</span>
         </div>
         <div
           className={currentSection === "skills" ? "active" : ""}
-          onClick={() => scrollToSection("skills")}
+          onClick={scroll.skills}
         >
           <Skills className="mobile-nav-icon" />
           <span>skills</span>
         </div>
         <div
           className={currentSection === "projects" ? "active" : ""}
-          onClick={() => scrollToSection("projects")}
+          onClick={scroll.projects}
         >
           <Projects className="mobile-nav-icon" />
           <span>projects</span>
         </div>
         <div
           className={currentSection === "contact" ? "active" : ""}
-          onClick={() => scrollToSection("contact")}
+          onClick={scroll.contact}
         >
           <Contact className="mobile-nav-icon" />
           <span>contact</span>
