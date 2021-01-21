@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./styles/main.scss";
+import emailjs from "emailjs-com";
 
 // Icons
 import { ChevronDown } from "@styled-icons/bootstrap/ChevronDown";
@@ -22,6 +23,11 @@ import DesktopProjects from "./components/DesktopProjects";
 import useWindowWidth from "./hooks/useWindowWidth";
 
 const Layout = () => {
+  const [senderName, setSenderName] = useState("");
+  const [senderEmail, setSenderEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
   const home = useRef(null);
   const about = useRef(null);
   const skills = useRef(null);
@@ -44,7 +50,30 @@ const Layout = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_fy78eca",
+        "template_uhbeqoi",
+        e.target,
+        "user_Tha8CihyydD1rd2VK3pJx"
+      )
+      .then(
+        result => {
+          setSenderName("");
+          setSenderEmail("");
+          setMessage("");
+          setSubject("");
+        },
+        error => {
+          throw new Error(error);
+        }
+      );
   };
+
+  const handleNameImput = e => setSenderName(e.target.value);
+  const handleEmailImput = e => setSenderEmail(e.target.value);
+  const handleMessageImput = e => setMessage(e.target.value);
+  const handleSubmitImput = e => setSubject(e.target.value);
 
   useEffect(() => {
     setHeight();
@@ -131,11 +160,39 @@ const Layout = () => {
           <h2>
             <span className="first-letter">G</span>et in touch
           </h2>
-          <form onSubmit={e => handleSubmit(e)}>
-            <input type="text" placeholder="Full name" name="full-name" />
-            <input type="email" placeholder="Email" name="email" />
-            <input type="text" placeholder="Subject" name="subject" />
-            <textarea name="message" placeholder="Message" />
+          <form className="contact-form" onSubmit={e => handleSubmit(e)}>
+            <input type="hidden" name="contact_number" />
+            <input
+              onChange={e => handleNameImput(e)}
+              value={senderName}
+              type="text"
+              placeholder="Full name"
+              name="name"
+              required
+            />
+            <input
+              onChange={e => handleEmailImput(e)}
+              value={senderEmail}
+              type="email"
+              placeholder="Email"
+              name="email"
+              required
+            />
+            <input
+              onChange={e => handleSubmitImput(e)}
+              value={subject}
+              type="text"
+              placeholder="Subject"
+              name="subject"
+              required
+            />
+            <textarea
+              onChange={e => handleMessageImput(e)}
+              value={message}
+              name="message"
+              placeholder="Message"
+              required
+            />
             <button type="submit">Send</button>
           </form>
         </section>
