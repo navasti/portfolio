@@ -1,13 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 
 // Context
 import { Context } from "../context/globalContext";
-
-// Hooks
-import useScrollPosition from "../hooks/useScrollPosition";
-
-// Utils
-import checkScrolledSection from "../utils/checkScrolledSection";
 
 // Icons
 import {
@@ -18,10 +12,8 @@ import {
   Home,
 } from "@styled-icons/feather";
 
-const MobileMenu = ({ scroll }) => {
-  const [currentSection, setCurrentSection] = useState("");
+const MobileMenu = ({ scroll, currentSection }) => {
   const [state, dispatch] = useContext(Context);
-  const scrollPosition = useScrollPosition();
 
   const toggleMenu = () => {
     dispatch({
@@ -29,16 +21,10 @@ const MobileMenu = ({ scroll }) => {
     });
   };
 
-  useEffect(() => {
-    let isMounted = true;
-    if (isMounted) {
-      let section = checkScrolledSection(scrollPosition);
-      setCurrentSection(section);
-    }
-    return function cleanup() {
-      isMounted = false;
-    };
-  }, [scrollPosition]);
+  const handleIconClick = callback => {
+    callback();
+    toggleMenu();
+  };
 
   return (
     <header>
@@ -56,35 +42,35 @@ const MobileMenu = ({ scroll }) => {
       <nav className={state.isMenuOpen ? "mobile-nav open" : "mobile-nav"}>
         <div
           className={currentSection === "home" ? "active" : ""}
-          onClick={scroll.home}
+          onClick={() => handleIconClick(scroll.home)}
         >
           <Home className="mobile-nav-icon" />
           <span>home</span>
         </div>
         <div
           className={currentSection === "about" ? "active" : ""}
-          onClick={scroll.about}
+          onClick={() => handleIconClick(scroll.about)}
         >
           <About className="mobile-nav-icon" />
           <span>about</span>
         </div>
         <div
           className={currentSection === "skills" ? "active" : ""}
-          onClick={scroll.skills}
+          onClick={() => handleIconClick(scroll.skills)}
         >
           <Skills className="mobile-nav-icon" />
           <span>skills</span>
         </div>
         <div
           className={currentSection === "projects" ? "active" : ""}
-          onClick={scroll.projects}
+          onClick={() => handleIconClick(scroll.projects)}
         >
           <Projects className="mobile-nav-icon" />
           <span>projects</span>
         </div>
         <div
           className={currentSection === "contact" ? "active" : ""}
-          onClick={scroll.contact}
+          onClick={() => handleIconClick(scroll.contact)}
         >
           <Contact className="mobile-nav-icon" />
           <span>contact</span>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 // Icons
 import { FacebookWithCircle } from "@styled-icons/entypo-social/FacebookWithCircle";
@@ -13,27 +13,7 @@ import {
   Home,
 } from "@styled-icons/feather";
 
-// Utils
-import checkScrolledSection from "../utils/checkScrolledSection";
-
-// Hooks
-import useScrollPosition from "../hooks/useScrollPosition";
-
-const DesktopMenu = ({ scroll }) => {
-  const [currentSection, setCurrentSection] = useState("");
-  const scrollPosition = useScrollPosition();
-
-  useEffect(() => {
-    let isMounted = true;
-    if (isMounted) {
-      let section = checkScrolledSection(scrollPosition);
-      setCurrentSection(section);
-    }
-    return function cleanup() {
-      isMounted = false;
-    };
-  }, [scrollPosition]);
-
+const DesktopMenu = ({ scroll, currentSection }) => {
   return (
     <aside>
       <div className="logo">PS</div>

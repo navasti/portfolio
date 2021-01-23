@@ -21,12 +21,16 @@ import DesktopProjects from "./components/DesktopProjects";
 
 // Hooks
 import useWindowWidth from "./hooks/useWindowWidth";
+import useScrollPosition from "./hooks/useScrollPosition";
 
 const Layout = () => {
   const [senderName, setSenderName] = useState("");
   const [senderEmail, setSenderEmail] = useState("");
+  const [currentSection, setCurrentSection] = useState("home");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
+  const [sendingMessage, setSendingMessage] = useState(false);
+  const [messageSent, setMessageSent] = useState(false);
 
   const home = useRef(null);
   const about = useRef(null);
@@ -34,6 +38,7 @@ const Layout = () => {
   const projects = useRef(null);
   const contact = useRef(null);
   let width = useWindowWidth();
+  let scrollPosition = useScrollPosition();
 
   const setHeight = () => {
     let vh = window.innerHeight * 0.01;
@@ -50,6 +55,7 @@ const Layout = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    setSendingMessage(true);
     emailjs
       .sendForm(
         "service_fy78eca",
@@ -63,6 +69,10 @@ const Layout = () => {
           setSenderEmail("");
           setMessage("");
           setSubject("");
+          setTimeout(() => {
+            setSendingMessage(false);
+            setMessageSent(true);
+          }, 1000);
         },
         error => {
           throw new Error(error);
@@ -76,16 +86,46 @@ const Layout = () => {
   const handleSubmitImput = e => setSubject(e.target.value);
 
   useEffect(() => {
+    const body = document.body.getBoundingClientRect().top;
+    const homeRect = home.current.getBoundingClientRect();
+    const aboutRect = about.current.getBoundingClientRect();
+    const skillsRect = skills.current.getBoundingClientRect();
+    const projectsRect = projects.current.getBoundingClientRect();
+    const contactRect = contact.current.getBoundingClientRect();
+
     setHeight();
+
+    if (aboutRect.top - aboutRect.height / 2 - body < scrollPosition) {
+      setCurrentSection("about");
+    } else {
+      setCurrentSection("home");
+    }
+    if (skillsRect.top - skillsRect.height / 2 - body < scrollPosition) {
+      setCurrentSection("skills");
+    }
+    if (projectsRect.top - projectsRect.height / 2 - body < scrollPosition) {
+      setCurrentSection("projects");
+    }
+    if (contactRect.top - contactRect.height / 2 - body < scrollPosition) {
+      setCurrentSection("contact");
+    }
+    if (homeRect.top === 0) {
+      setCurrentSection("home");
+    }
+
     window.addEventListener("resize", () => setHeight());
     return window.removeEventListener("resize", () => setHeight());
-  });
+  }, [scrollPosition]);
 
   return (
     <>
-      {width > 1023 && <DesktopMenu scroll={executeScroll} />}
+      {width > 1023 && (
+        <DesktopMenu scroll={executeScroll} currentSection={currentSection} />
+      )}
       <div className="container">
-        {width < 1023 && <MobileMenu scroll={executeScroll} />}
+        {width < 1023 && (
+          <MobileMenu scroll={executeScroll} currentSection={currentSection} />
+        )}
         {width < 1023 ? (
           <Constellation value={35} size={2} />
         ) : (
@@ -193,7 +233,19 @@ const Layout = () => {
               placeholder="Message"
               required
             />
-            <button type="submit">Send</button>
+            <button type="submit">
+              {sendingMessage ? (
+                <div class="spinner">
+                  <div class="bounce1"></div>
+                  <div class="bounce2"></div>
+                  <div class="bounce3"></div>
+                </div>
+              ) : messageSent ? (
+                "Sent"
+              ) : (
+                "Send"
+              )}
+            </button>
           </form>
         </section>
 
