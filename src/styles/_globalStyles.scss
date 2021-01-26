@@ -44,3 +44,16 @@ a {
   font-family: $second-font;
   color: $second-font-color;
 }
+
+::-webkit-scrollbar {
+  width: 1.5rem;
+}
+::-webkit-scrollbar-track {
+  background: $second-fill-color;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

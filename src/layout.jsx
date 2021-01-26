@@ -148,20 +148,20 @@ const Layout = () => {
             <span className="first-letter">A</span> little bit about me
           </h2>
           <p>
-            I am a young, abitious person who has been constantly learning about
-            the world of web development for over a year. Since then I have
-            learned a lot and coding has become my passion. I have been
+            I am a young, ambitious person who has been constantly learning
+            about the world of web development for over a year. Since then I
+            have learned a lot and coding has become my passion. I have been
             consolidating my knowledge by implementing my own projects. During
-            this time I discovered that this is something I would like to do in
-            life. My main goal is continuous personal development and the
-            improvement of coding and designing skills.
+            this time I discovered that this is something I would like to
+            professionally in my life. My main goals are continuous personal
+            development and improvement of coding and design skills by
+            implementing fascinating projects.
           </p>
           <br />
           <p>
             Besides, I am a nice and calm guy. I love travelling and physical
-            movement, mainly cycling and hiking. I am an animal lover and I am a
-            vegan. I always try to look at the world positively and
-            optimistically.
+            exercise, mainly cycling and hiking. I am an animal lover and I am a
+            vegan. I always try to be positive and optimistic.
           </p>
         </section>
 
@@ -170,19 +170,20 @@ const Layout = () => {
             <span className="first-letter">S</span>kills and technologies
           </h2>
           <p>
-            I take the greatest pleasure from creating applications in React or
-            in its popular framework which is Gatsby.{" "}
+            My greatest pleasure is creating applications in React or its
+            popular Gatsby framework. I usually style these applications using
+            Sass and Styled Components according to the mobile first principle.
           </p>
           <p>
-            The most commonly used libraries for animation are gsap and
+            The most common libraries I use for animation are gsap and
             framer-motion.
           </p>
           <p>The text editor I use is Visual Studio Code.</p>
           <p>
-            If the application requires external data download, I use public API
-            or I create my own server in Node that provides data in JSON.
+            If the application requires external data, I use public API or I
+            create my own server in Node that provides data in JSON.
           </p>
-          <p>I design my applications in Figma program.</p>
+          <p>I design my applications in Figma.</p>
           <p>
             I am constantly learning new technologies and I never limit myself
             to one solution.
@@ -231,6 +232,7 @@ const Layout = () => {
               value={message}
               name="message"
               placeholder="Message"
+              spellCheck="false"
               required
             />
             <button type="submit">
