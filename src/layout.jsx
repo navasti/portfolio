@@ -195,6 +195,17 @@ const Layout = () => {
             <span className="first-letter">S</span>ome of my projects
           </h2>
           {width < 767 ? <MobileProjects /> : <DesktopProjects />}
+          <div className="more-projects">
+            All my projects are available on my GitHub profile,
+            <a
+              target="_blank"
+              without
+              rel="noreferrer"
+              href="https://github.com/navasti?tab=repositories"
+            >
+              here.
+            </a>
+          </div>
         </section>
 
         <section className="contact" ref={contact}>

@@ -243,6 +243,28 @@
     @include mediaQuery(width1820) {
       padding: 9rem 16rem;
     }
+    .more-projects {
+      text-align: center;
+      margin-top: 1.2rem;
+      font-size: 1.1rem;
+      @include mediaQuery(width600) {
+        font-size: 1.3rem;
+      }
+      @include mediaQuery(width1280) {
+        font-size: 1.5rem;
+      }
+      @include mediaQuery(width1440) {
+        font-size: 1.6rem;
+      }
+      @include mediaQuery(width1820) {
+        font-size: 1.7rem;
+      }
+      a {
+        display: inline-block;
+        margin-left: 0.3rem;
+        color: $second-font-color;
+      }
+    }
   }
 
   .contact {
